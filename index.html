@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Arena Fighters</title>
+  </head>
+
+  <body>
+    <main class="main-container">
+      <header>
+        <h1 class="title">Arena Fighters</h1>
+        <div class="tab-container">
+          <button class="tab-btn active" id="fightersTab">Combattants</button>
+          <button class="tab-btn" id="fightsTab">Combats</button>
+        </div>
+      </header>
+
+      <div class="forms-container">
+        <!-- Formulaire pour ajouter un combattant -->
+        <div id="add-fighter-form" class="form-container">
+          <h3>Ajouter un Combattant</h3>
+          <form id="fighterForm">
+            <input
+              type="text"
+              id="fighterName"
+              placeholder="Prénom et Nom"
+              required
+            />
+            <input
+              type="text"
+              id="fighterNickname"
+              placeholder="Surnom"
+              required
+            />
+            <div style="display: flex; gap: 10px">
+              <input type="number" id="fighterAge" placeholder="Âge" required />
+              <input
+                type="text"
+                id="fighterNationality"
+                placeholder="Nationalité"
+                required
+              />
+            </div>
+            <div style="display: flex; gap: 10px">
+              <input
+                type="text"
+                id="fighterRecord"
+                placeholder="Record"
+                required
+              />
+              <input
+                type="text"
+                id="fighterTeam"
+                placeholder="Équipe"
+                required
+              />
+            </div>
+            <input
+              type="text"
+              id="fighterWeightClass"
+              placeholder="Catégorie de poids"
+              required
+            />
+            <button type="submit" class="fighter-edit">
+              Ajouter Combattant
+            </button>
+          </form>
+        </div>
+
+        <!-- Formulaire pour ajouter un combat -->
+        <div id="add-fight-form" class="form-container">
+          <h3>Ajouter un Combat</h3>
+          <form id="fightForm">
+            <select id="fighter1Id" required>
+              <option value="">Sélectionner le Combattant 1</option>
+            </select>
+            <select id="fighter2Id" required>
+              <option value="">Sélectionner le Combattant 2</option>
+            </select>
+            <input
+              type="text"
+              id="fightEventName"
+              placeholder="Nom de l'Événement"
+              required
+            />
+            <input type="date" id="fightDate" required />
+            <select id="winnerFighterId" required>
+              <option value="">Sélectionner le Vainqueur</option>
+            </select>
+            <div style="display: none">
+              <label for="methodId">Méthode de victoire :</label>
+              <select id="methodId"></select>
+            </div>
+            <button
+              type="button"
+              class="fighter-edit"
+              id="randomizeAndCreateFightButton"
+            >
+              Choisir un vainqueur aléatoirement et ajouter le combat
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="content">
+        <div
+          class="fighters-content"
+          id="fightersContent"
+          style="display: block"
+        >
+          <h2>Liste des Combattants</h2>
+          <div class="fighters"></div>
+        </div>
+
+        <div class="fights-content" id="fightsContent" style="display: none">
+          <h2>Liste des Combats</h2>
+          <div class="fights"></div>
+        </div>
+      </div>
+
+      <div id="edit-fighter-form" class="form-container" style="display: none">
+        <h3>Modifier un Combattant</h3>
+        <form id="editFighterForm">
+          <input type="hidden" id="editFighterId" />
+          <input
+            type="text"
+            id="editFighterName"
+            placeholder="Prénom et Nom"
+            required
+          />
+          <input
+            type="text"
+            id="editFighterNickname"
+            placeholder="Surnom"
+            required
+          />
+          <input type="number" id="editFighterAge" placeholder="Âge" required />
+          <input
+            type="text"
+            id="editFighterNationality"
+            placeholder="Nationalité"
+            required
+          />
+          <input
+            type="text"
+            id="editFighterRecord"
+            placeholder="Record"
+            required
+          />
+          <input
+            type="text"
+            id="editFighterTeam"
+            placeholder="Équipe"
+            required
+          />
+          <input
+            type="text"
+            id="editFighterWeightClass"
+            placeholder="Catégorie de poids"
+            required
+          />
+          <button type="submit">Sauvegarder les Modifications</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="index.js"></script>
+
+    <script>
+      document.getElementById("fightersTab").addEventListener("click", () => {
+        document.getElementById("fightersTab").classList.add("active");
+        document.getElementById("fightsTab").classList.remove("active");
+
+        document.getElementById("fightersContent").style.display = "block";
+        document.getElementById("fightsContent").style.display = "none";
+      });
+
+      document.getElementById("fightsTab").addEventListener("click", () => {
+        document.getElementById("fightersTab").classList.remove("active");
+        document.getElementById("fightsTab").classList.add("active");
+
+        document.getElementById("fightersContent").style.display = "none";
+        document.getElementById("fightsContent").style.display = "block";
+      });
+    </script>
+  </body>
+</html>
